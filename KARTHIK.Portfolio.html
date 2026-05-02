@@ -111,37 +111,6 @@ h1.hero-name .gr{color:var(--green);text-shadow:0 0 60px rgba(0,255,136,.25);}
 .t-o{color:var(--text2);padding-left:.9rem;display:block;}
 .t-ok{color:var(--green);}
 
-/* AI LAB */
-.ai-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;padding:5px 14px;border-radius:2px;background:rgba(167,139,250,.1);color:var(--purple);border:1px solid rgba(167,139,250,.2);margin-bottom:1rem;}
-.ai-intro{text-align:center;margin-bottom:3rem;}
-.ai-intro p{color:var(--text2);font-size:.9rem;max-width:580px;margin:.75rem auto 0;line-height:1.7;}
-.ai-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
-.ai-tab{font-family:var(--mono);font-size:11px;padding:6px 16px;border-radius:2px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:none;transition:all .2s;}
-.ai-tab.active{background:var(--green-dim);color:var(--green);border-color:var(--green-border);}
-.ai-tab:hover:not(.active){border-color:var(--border2);color:var(--text);}
-.ai-panel{display:none;}.ai-panel.active{display:block;}
-.ai-tool{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
-.ai-tool-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
-.ai-tool-title{font-family:var(--mono);font-size:12px;color:var(--text2);}
-.ai-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
-.ai-tool-body{padding:1.25rem;}
-.ai-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.1em;margin-bottom:.4rem;}
-textarea.ai-in,input.ai-in{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:.75rem 1rem;font-family:var(--mono);font-size:13px;color:var(--text);outline:none;transition:border-color .2s;font-family:var(--body);}
-textarea.ai-in{min-height:90px;resize:vertical;}
-textarea.ai-in:focus,input.ai-in:focus{border-color:var(--green-border);}
-.ai-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
-.ai-field{margin-bottom:1rem;}
-.ai-run{display:inline-flex;align-items:center;gap:7px;padding:.65rem 1.4rem;border-radius:3px;background:var(--green);color:#000;font-family:var(--mono);font-size:12px;font-weight:700;border:none;cursor:none;transition:all .2s;margin-top:.5rem;}
-.ai-run:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,255,136,.25);}
-.ai-run:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
-.ai-out{margin-top:1.25rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1rem;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--text2);min-height:80px;white-space:pre-wrap;display:none;}
-.ai-out.show{display:block;}
-.ai-out .hg{color:var(--green);}.ai-out .ha{color:var(--amber);}.ai-out .hr{color:var(--red);}.ai-out .hb{color:var(--blue);}.ai-out .hp{color:var(--purple);}
-.ai-thinking{display:none;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--text3);margin-top:.75rem;}
-.ai-thinking.show{display:flex;}
-.spin{width:14px;height:14px;border:1.5px solid var(--border2);border-top-color:var(--green);border-radius:50%;animation:sp .7s linear infinite;flex-shrink:0;}
-@keyframes sp{to{transform:rotate(360deg);}}
-
 /* CHAT */
 .chat-box{background:var(--bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
 .chat-msgs{height:320px;overflow-y:auto;padding:1.25rem;display:flex;flex-direction:column;gap:.75rem;}
@@ -209,7 +178,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--text3);}
         <div id="cur-ring"></div>
         <nav>
             <div class="nav-logo">
-                <span>~/</span>karthik-bandi
+                <span>~/</span>
+                karthik-bandi
             </div>
             <ul class="nav-links">
                 <li>
@@ -220,9 +190,6 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--text3);}
                 </li>
                 <li>
                     <a href="#projects">projects</a>
-                </li>
-                <li>
-                    <a href="#ai-lab">ai lab</a>
                 </li>
                 <li>
                     <a href="#contact">contact</a>
@@ -237,7 +204,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--text3);}
             <div class="hero-glow"></div>
             <div class="hero-content">
                 <div class="hero-eyebrow">QA AUTOMATION ENGINEER · HYDERABAD, INDIA</div>
-                <h1 class="hero-name">KARTHIK
+                <h1 class="hero-name">
+                    KARTHIK
                     <br>
                     <span class="gr">BANDI</span>
                 </h1>
@@ -323,33 +291,48 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--text3);}
                     </div>
                     <div class="exp-sub">WEB AUTOMATION · Selenium + TestNG + POM</div>
                     <ul class="exp-ul">
-                        <li>Engineered
-                            <strong>200+ end-to-end test cases</strong> — community registration, authentication, block/unit management, role-based access — achieving
+                        <li>
+                            Engineered
+                            <strong>200+ end-to-end test cases</strong>
+                            — community registration, authentication, block/unit management, role-based access — achieving
                             <strong>70% automation coverage</strong>
                         </li>
-                        <li>Architected
-                            <strong>POM framework from scratch</strong> — folder structure, base classes, reusable utilities — cutting maintenance effort by ~40%
+                        <li>
+                            Architected
+                            <strong>POM framework from scratch</strong>
+                            — folder structure, base classes, reusable utilities — cutting maintenance effort by ~40%
                         </li>
                         <li>Built test plans per sprint cycle defining scope, entry/exit criteria — covering Smoke, Sanity, Regression, and UAT phases</li>
-                        <li>Tracked
-                            <strong>50+ defects in JIRA</strong> with severity classification — reducing resolution time by ~30%
+                        <li>
+                            Tracked
+                            <strong>50+ defects in JIRA</strong>
+                            with severity classification — reducing resolution time by ~30%
                         </li>
                         <li>Delivered structured execution reports via Soft Assertions + TestNG before every release</li>
                     </ul>
                     <div class="exp-sub">MOBILE AUTOMATION · Appium + Java (3 Apps)</div>
                     <ul class="exp-ul">
-                        <li>Automated
-                            <strong>Admin App</strong> workflows — intercepted
-                            <strong>12+ critical sync defects</strong> between web and mobile before production
+                        <li>
+                            Automated
+                            <strong>Admin App</strong>
+                            workflows — intercepted
+                            <strong>12+ critical sync defects</strong>
+                            between web and mobile before production
                         </li>
-                        <li>Executed financial transaction flows for
-                            <strong>Member App</strong> across
-                            <strong>5+ real Android devices</strong> — Samsung, Redmi, Realme on Android 11–14
+                        <li>
+                            Executed financial transaction flows for
+                            <strong>Member App</strong>
+                            across
+                            <strong>5+ real Android devices</strong>
+                            — Samsung, Redmi, Realme on Android 11–14
                         </li>
-                        <li>Validated guest entry + visitor approval workflows for
-                            <strong>Security App</strong> — full P0 journey coverage before go-live
+                        <li>
+                            Validated guest entry + visitor approval workflows for
+                            <strong>Security App</strong>
+                            — full P0 journey coverage before go-live
                         </li>
-                        <li>End-to-end integration testing + API validation (Postman + Rest Assured) across 4-app ecosystem — cut manual testing time by
+                        <li>
+                            End-to-end integration testing + API validation (Postman + Rest Assured) across 4-app ecosystem — cut manual testing time by
                             <strong>70%</strong>
                         </li>
                     </ul>
@@ -511,7 +494,8 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--text3);}
                     </div>
                     <div class="term-body">
                         <div>
-                            <span class="t-p">$</span>cat qa-rules.txt
+                            <span class="t-p">$</span>
+                            cat qa-rules.txt
                         </div>
                         <br>
                         <div>
@@ -546,208 +530,10 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--text3);}
                 </div>
             </div>
         </section>
-        <!-- AI LAB -->
-        <section class="sec" id="ai-lab">
-            <div class="sec-inner">
-                <div class="ai-intro fi">
-                    <div class="ai-badge">⚡ POWERED BY CLAUDE AI</div>
-                    <div class="sec-label" style="justify-content:center;">AI CAPABILITIES LAB</div>
-                    <h2 class="sec-title">What No Human Portfolio Can Do</h2>
-                    <p>Live AI tools that demonstrate QA thinking in real-time. Generate a professional bug report. Write full test cases from a user story. Ask anything about my experience. Practice QA interview questions with real evaluation.</p>
-                </div>
-                <!-- API KEY SETUP -->
-                <div class="key-banner show" id="key-banner">
-                    ⚠️
-                    <strong>For recruiters / visitors:</strong> To enable AI features, open your browser console and run:
-                    <br>
-                    <code style="color:var(--text);">localStorage.setItem('claude_key', 'YOUR_ANTHROPIC_API_KEY')</code>
-                    <br>
-                    Then refresh the page. Get a free API key at
-                    <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>
-                    — the features then work live.
-                    <br>
-                    <br>
-                    <strong>For Karthik:</strong>
-                    Add your own key so interviewers/recruiters can see the AI working when you demo this live.
-                </div>
-                <div class="fi">
-                    <div class="ai-tabs">
-                        <button class="ai-tab active" onclick="switchTab('chat')">💬 Ask Me Anything</button>
-                        <button class="ai-tab" onclick="switchTab('buggen')">🐛 Bug Report Generator</button>
-                        <button class="ai-tab" onclick="switchTab('tcgen')">📋 Test Case Generator</button>
-                        <button class="ai-tab" onclick="switchTab('interview')">🎯 Interview Simulator</button>
-                    </div>
-                    <!-- CHAT -->
-                    <div class="ai-panel active" id="panel-chat">
-                        <div class="ai-tool">
-                            <div class="ai-tool-header">
-                                <div class="ai-dot"></div>
-                                <div class="ai-tool-title">AI Proxy — Ask anything about Karthik's experience, skills, or QA thinking</div>
-                            </div>
-                            <div class="chat-box">
-                                <div class="chat-msgs" id="chat-msgs">
-                                    <div class="msg">
-                                        <div class="msg-av ai">KB</div>
-                                        <div class="msg-bub">Hi! I'm Karthik's AI proxy. I know everything about his experience — the Homi365 live platform, the 4-app ecosystem, the POM framework he built from scratch, the 12 critical sync bugs caught before production. Ask me anything a senior QA would want to know.</div>
-                                    </div>
-                                </div>
-                                <div class="suggs">
-                                    <button class="sugg" onclick="sendSugg(this)">How did you handle test data management?</button>
-                                    <button class="sugg" onclick="sendSugg(this)">Explain your POM framework architecture</button>
-                                    <button class="sugg" onclick="sendSugg(this)">How did you find the 12 sync bugs?</button>
-                                    <button class="sugg" onclick="sendSugg(this)">What's your defect lifecycle process?</button>
-                                </div>
-                                <div class="chat-ir">
-                                    <input
-                                        id="chat-input"
-                                        type="text"
-                                        placeholder="Ask about my experience, projects, or QA approach..."
-                                        onkeydown="if(event.key==='Enter')sendChat()"
-                                    >
-                                    <button class="chat-send" id="chat-send-btn" onclick="sendChat()">Send →</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- BUG REPORT -->
-                    <div class="ai-panel" id="panel-buggen">
-                        <div class="ai-tool">
-                            <div class="ai-tool-header">
-                                <div class="ai-dot"></div>
-                                <div class="ai-tool-title">Bug Report Generator — Describe any bug scenario, get a professional JIRA-ready report</div>
-                            </div>
-                            <div class="ai-tool-body">
-                                <div class="ai-row">
-                                    <div class="ai-field">
-                                        <div class="ai-label">BUG SCENARIO — WHAT YOU OBSERVED</div>
-                                        <textarea class="ai-in" id="bug-scenario" placeholder="e.g. When a user logs into the mobile app and opens the web app simultaneously, the profile data doesn't sync and shows stale information from the previous session..."></textarea>
-                                    </div>
-                                    <div>
-                                        <div class="ai-field">
-                                            <div class="ai-label">ENVIRONMENT</div>
-                                            <input
-                                                class="ai-in"
-                                                id="bug-env"
-                                                type="text"
-                                                placeholder="e.g. Android 13, Chrome 120, Staging"
-                                            >
-                                        </div>
-                                        <div class="ai-field">
-                                            <div class="ai-label">SEVERITY</div>
-                                            <input
-                                                class="ai-in"
-                                                id="bug-sev"
-                                                type="text"
-                                                placeholder="e.g. Critical / Major / Minor"
-                                            >
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="ai-run" id="bug-btn" onclick="generateBugReport()">🐛 Generate Bug Report</button>
-                                <div class="ai-thinking" id="bug-thinking">
-                                    <div class="spin"></div>
-                                    <span id="bug-think-txt">Analyzing scenario...</span>
-                                </div>
-                                <div class="ai-out" id="bug-out"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- TEST CASES -->
-                    <div class="ai-panel" id="panel-tcgen">
-                        <div class="ai-tool">
-                            <div class="ai-tool-header">
-                                <div class="ai-dot"></div>
-                                <div class="ai-tool-title">Test Case Generator — Paste a user story, get complete test cases with automation mapping</div>
-                            </div>
-                            <div class="ai-tool-body">
-                                <div class="ai-row">
-                                    <div class="ai-field">
-                                        <div class="ai-label">USER STORY / FEATURE DESCRIPTION</div>
-                                        <textarea class="ai-in" id="tc-story" placeholder="e.g. As a community admin, I want to approve or reject visitor entry requests from the mobile app so that building security is controlled in real-time..."></textarea>
-                                    </div>
-                                    <div>
-                                        <div class="ai-field">
-                                            <div class="ai-label">TESTING TYPE</div>
-                                            <input
-                                                class="ai-in"
-                                                id="tc-type"
-                                                type="text"
-                                                placeholder="e.g. Functional, Integration, Mobile"
-                                            >
-                                        </div>
-                                        <div class="ai-field">
-                                            <div class="ai-label">NUMBER OF TEST CASES</div>
-                                            <input
-                                                class="ai-in"
-                                                id="tc-count"
-                                                type="text"
-                                                value="5"
-                                                placeholder="e.g. 5"
-                                            >
-                                        </div>
-                                    </div>
-                                </div>
-                                <button class="ai-run" id="tc-btn" onclick="generateTestCases()">📋 Generate Test Cases</button>
-                                <div class="ai-thinking" id="tc-thinking">
-                                    <div class="spin"></div>
-                                    <span>Designing test cases with boundary conditions...</span>
-                                </div>
-                                <div class="ai-out" id="tc-out"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- INTERVIEW -->
-                    <div class="ai-panel" id="panel-interview">
-                        <div class="ai-tool">
-                            <div class="ai-tool-header">
-                                <div class="ai-dot"></div>
-                                <div class="ai-tool-title">QA Interview Simulator — Answer real QA interview questions, get scored by an AI senior QA</div>
-                            </div>
-                            <div class="ai-tool-body">
-                                <div id="iv-qbox" style="background:var(--bg);border:1px solid var(--green-border);border-radius:4px;padding:1rem;margin-bottom:1rem;font-size:.9rem;line-height:1.7;color:var(--text);display:none;"></div>
-                                <div style="display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap;">
-                                    <button class="ai-run" style="margin-top:0;" onclick="getQ()">🎯 Get a Question</button>
-                                    <button class="ai-run" style="margin-top:0;background:var(--surface);color:var(--text2);border:1px solid var(--border);" onclick="getQ('hard')">💀 Hard Mode</button>
-                                </div>
-                                <div class="ai-field" id="iv-area" style="display:none;">
-                                    <div class="ai-label">YOUR ANSWER</div>
-                                    <textarea
-                                        class="ai-in"
-                                        id="iv-answer"
-                                        placeholder="Write your answer here — be as detailed as you would in a real interview..."
-                                        style="min-height:110px;"
-                                    ></textarea>
-                                    <button
-                                        class="ai-run"
-                                        id="iv-btn"
-                                        onclick="evalAnswer()"
-                                        style="margin-top:.5rem;"
-                                    >⚡ Evaluate My Answer</button>
-                                </div>
-                                <div class="ai-thinking" id="iv-thinking">
-                                    <div class="spin"></div>
-                                    <span>Evaluating like a senior QA interviewer...</span>
-                                </div>
-                                <div class="ai-out" id="iv-out"></div>
-                                <div class="iv-scores" id="iv-scores" style="display:none;">
-                                    <div class="score-card">
-                                        <div class="score-num" id="sc1">-</div>
-                                        <div class="score-lbl">TECHNICAL</div>
-                                    </div>
-                                    <div class="score-card">
-                                        <div class="score-num" id="sc2">-</div>
-                                        <div class="score-lbl">CLARITY</div>
-                                    </div>
-                                    <div class="score-card">
-                                        <div class="score-num" id="sc3">-</div>
-                                        <div class="score-lbl">DEPTH</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      
+           
+          
+
         </section>
         <!-- ABOUT -->
         <section class="sec sec-alt" id="about">
@@ -756,17 +542,25 @@ footer p{font-family:var(--mono);font-size:10px;color:var(--text3);}
                     <div class="about-text fi">
                         <div class="sec-label">ABOUT</div>
                         <h2 class="sec-title" style="font-size:2.5rem;margin-bottom:1.25rem;">The Story Behind The Tests</h2>
-                        <p>I'm a QA Automation Engineer from Hyderabad with a
-                            <strong>B.Tech in Computer Science</strong> from Vaagdevi Engineering College. My pull toward QA is simple: I'm drawn to finding what breaks before users do.
+                        <p>
+                            I'm a QA Automation Engineer from Hyderabad with a
+                            <strong>B.Tech in Computer Science</strong>
+                            from Vaagdevi Engineering College. My pull toward QA is simple: I'm drawn to finding what breaks before users do.
                         </p>
-                        <p>During my
-                            <strong>6-month paid internship at Zaktis IT Solutions</strong>, I didn't follow a test plan — I built one from scratch for every sprint, owned the framework architecture, and operated as a full QA engineer, not just an intern.
+                        <p>
+                            During my
+                            <strong>6-month paid internship at Zaktis IT Solutions</strong>
+                            , I didn't follow a test plan — I built one from scratch for every sprint, owned the framework architecture, and operated as a full QA engineer, not just an intern.
                         </p>
-                        <p>What sets me apart: I've tested a
-                            <strong>live, deployed production platform</strong> with real users. The 12 sync bugs I caught before production — those would have been real user-facing failures. That mindset is what I bring to every role.
+                        <p>
+                            What sets me apart: I've tested a
+                            <strong>live, deployed production platform</strong>
+                            with real users. The 12 sync bugs I caught before production — those would have been real user-facing failures. That mindset is what I bring to every role.
                         </p>
-                        <p>Actively seeking QA Automation Engineer roles where I can
-                            <strong>own quality end-to-end</strong>, not just execute test cases.
+                        <p>
+                            Actively seeking QA Automation Engineer roles where I can
+                            <strong>own quality end-to-end</strong>
+                            , not just execute test cases.
                         </p>
                     </div>
                     <div class="fi">
@@ -866,27 +660,6 @@ async function callClaude(messages,system=''){
 }
 
 // KARTHIK SYSTEM PROMPT
-const SYS=`You are an AI proxy for Karthik Bandi, a QA Automation Engineer from Hyderabad, India. Answer questions as if you ARE Karthik, in first person. Be confident, specific, and demonstrate deep QA knowledge.
-
-BACKGROUND:
-- 6 months paid internship at Zaktis IT Solutions (Oct 2025 – Apr 2026)
-- Project: Homi365 — live SaaS community management platform
-- Tested: 1 web app + Admin App + Member App + Security App (3 mobile apps)
-- Built POM framework from scratch: folder structure, base classes, reusable utilities, config management
-- 200+ automated test cases, 70% automation coverage on web platform
-- 50+ defects tracked in JIRA with severity/priority classification, ~30% faster resolution
-- 12 critical sync defects caught between web and mobile before production release
-- 70% reduction in manual testing time
-- Mobile tested on 5+ real devices: Samsung, Redmi, Realme — Android 11-14
-- Tech: Selenium WebDriver, Appium, Java, TestNG, Cucumber BDD, Postman, Rest Assured, Maven, Jenkins, Git, JIRA, Bugzilla, Apache POI, SQL/MySQL
-- Testing types: Smoke, Sanity, Regression, UAT, Integration, E2E, Cross-browser, Mobile, Blackbox, Whitebox
-- Projects: Sports Ground Booking APK (Appium+Java+TestNG), Gmail Data-Driven Suite (Selenium+POI+Maven), Conference Ticket Generator (manual)
-- Education: B.Tech CSE, Vaagdevi Engineering College, CGPA 7.19, 2020-2024
-- Certifications: Selenium WebDriver with Java, Appium Mobile Testing Udemy 2024, Manual Testing Fundamentals
-
-QA PHILOSOPHY: Integration testing is where real bugs hide. Never trust emulators alone. Shift-left testing. Automation frameworks must be extensible.
-
-Be concise but technically deep. Speak like a confident junior engineer who punches above their weight.`;
 
 // CHAT
 let history=[];
@@ -1138,5 +911,5 @@ PUT THIS URL ON:
 
 =======================================================
 -->
-    </body>
+    </script>
 </html>
