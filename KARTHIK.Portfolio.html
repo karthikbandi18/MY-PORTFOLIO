@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Karthik Bandi — QA Automation Engineer</title>
+        <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+        <style>
+:root{--bg:#07090d;--bg2:#0b0e14;--bg3:#0f1319;--surface:#111620;--surface2:#161c28;--green:#00ff88;--green2:#00cc6a;--green-dim:rgba(0,255,136,.07);--green-border:rgba(0,255,136,.18);--amber:#f5a623;--red:#ff4757;--blue:#3ecfff;--purple:#a78bfa;--text:#e2e8f4;--text2:#7a8599;--text3:#3a4255;--border:rgba(255,255,255,.05);--border2:rgba(255,255,255,.09);--mono:'JetBrains Mono',monospace;--display:'Bebas Neue',cursive;--body:'DM Sans',sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden;cursor:none;}
+::-webkit-scrollbar{width:3px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--green-border);border-radius:2px;}
+#cur{position:fixed;width:6px;height:6px;background:var(--green);border-radius:50%;pointer-events:none;z-index:9999;box-shadow:0 0 10px var(--green);}
+#cur-ring{position:fixed;width:28px;height:28px;border:1px solid rgba(0,255,136,.35);border-radius:50%;pointer-events:none;z-index:9998;transition:all .13s ease;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;background:rgba(7,9,13,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+.nav-logo{font-family:var(--mono);font-size:12px;color:var(--green);}
+.nav-logo span{color:var(--text3);}
+.nav-links{display:flex;gap:1.75rem;list-style:none;}
+.nav-links a{font-family:var(--mono);font-size:11px;color:var(--text2);text-decoration:none;letter-spacing:.1em;transition:color .2s;}
+.nav-links a:hover{color:var(--green);}
+.nav-badge{font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:2px;background:rgba(0,255,136,.1);color:var(--green);border:1px solid var(--green-border);animation:pb 2s infinite;}
+@keyframes pb{0%,100%{opacity:1;}50%{opacity:.6;}}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:7rem 2.5rem 4rem;position:relative;overflow:hidden;}
+.hero-scanlines{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,255,136,.012) 2px,rgba(0,255,136,.012) 4px);pointer-events:none;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,255,136,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.025) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.hero-glow{position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(0,255,136,.05) 0%,transparent 65%);top:-200px;left:-200px;pointer-events:none;}
+.hero-content{position:relative;z-index:1;max-width:1000px;}
+.hero-eyebrow{font-family:var(--mono);font-size:11px;color:var(--green);letter-spacing:.2em;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px;}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--green);}
+h1.hero-name{font-family:var(--display);font-size:clamp(5rem,13vw,11rem);line-height:.88;letter-spacing:.02em;margin-bottom:.5rem;}
+h1.hero-name .gr{color:var(--green);text-shadow:0 0 60px rgba(0,255,136,.25);}
+.hero-role{font-family:var(--mono);font-size:clamp(.85rem,1.5vw,1.1rem);color:var(--text2);margin:1.5rem 0 1rem;display:flex;align-items:center;gap:8px;}
+.blink{display:inline-block;width:2px;height:1.1em;background:var(--green);animation:bl 1s step-end infinite;vertical-align:middle;}
+@keyframes bl{50%{opacity:0;}}
+.hero-desc{font-size:1.05rem;color:var(--text2);line-height:1.8;max-width:560px;margin-bottom:2rem;}
+.hero-stats{display:flex;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;}
+.stat-num{font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--green);line-height:1;}
+.stat-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.12em;margin-top:4px;}
+.hero-cta{display:flex;gap:.75rem;flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:.7rem 1.5rem;border-radius:3px;font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;text-decoration:none;transition:all .2s;cursor:none;border:none;}
+.btn-g{background:var(--green);color:#000;}
+.btn-g:hover{background:var(--green2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,255,136,.28);}
+.btn-o{border:1px solid var(--green-border)!important;color:var(--green);background:transparent;}
+.btn-o:hover{background:var(--green-dim);transform:translateY(-2px);}
+
+/* SECTIONS */
+.sec{padding:5.5rem 2.5rem;}.sec-alt{background:var(--bg2);}
+.sec-inner{max-width:1100px;margin:0 auto;}
+.sec-label{font-family:var(--mono);font-size:10px;color:var(--green);letter-spacing:.2em;margin-bottom:.6rem;display:flex;align-items:center;gap:8px;}
+.sec-label::after{content:'';width:40px;height:1px;background:var(--green-border);}
+.sec-title{font-family:var(--display);font-size:clamp(2.5rem,5vw,4rem);letter-spacing:.03em;margin-bottom:2.5rem;line-height:1;}
+
+/* METRICS */
+.metrics-bar{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:6px;overflow:hidden;max-width:1100px;margin:0 auto;}
+.metric-cell{background:var(--surface);padding:2rem 1.5rem;text-align:center;transition:background .3s;}
+.metric-cell:hover{background:var(--surface2);}
+.metric-big{font-family:var(--mono);font-size:2.5rem;font-weight:700;color:var(--green);display:block;line-height:1;}
+.metric-sub{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.1em;margin-top:6px;display:block;}
+.metric-desc{font-size:.78rem;color:var(--text2);margin-top:4px;}
+
+/* EXPERIENCE */
+.exp-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:2rem;margin-bottom:1.25rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;}
+.exp-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--green);}
+.exp-card:hover{border-color:var(--green-border);transform:translateX(3px);}
+.exp-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.75rem;margin-bottom:1.25rem;}
+.exp-role{font-size:1.1rem;font-weight:600;}
+.exp-co{font-family:var(--mono);font-size:12px;color:var(--green);margin-top:3px;}
+.exp-date{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:3px;}
+.exp-tag{font-family:var(--mono);font-size:10px;padding:3px 10px;border-radius:2px;background:rgba(0,255,136,.1);color:var(--green);border:1px solid var(--green-border);}
+.exp-sub{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.15em;margin:1rem 0 .6rem;display:flex;align-items:center;gap:6px;}
+.exp-sub::before{content:'▶';font-size:7px;}
+.exp-ul{list-style:none;}
+.exp-ul li{font-size:.875rem;color:var(--text2);line-height:1.75;padding:.3rem 0 .3rem 1.1rem;position:relative;border-bottom:1px solid rgba(255,255,255,.025);}
+.exp-ul li::before{content:'→';position:absolute;left:0;color:var(--green);font-family:var(--mono);font-size:11px;}
+.exp-ul li strong{color:var(--text);font-weight:600;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;}
+.sk-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.5rem;transition:border-color .3s;}
+.sk-card:hover{border-color:var(--green-border);}
+.sk-icon{font-size:20px;margin-bottom:.75rem;}
+.sk-title{font-size:.9rem;font-weight:600;margin-bottom:.75rem;}
+.tags{display:flex;flex-wrap:wrap;gap:5px;}
+.tag{font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:2px;background:rgba(255,255,255,.04);color:var(--text2);border:1px solid var(--border);transition:all .2s;}
+.tag:hover,.tag.on{background:var(--green-dim);color:var(--green);border-color:var(--green-border);}
+
+/* PROJECTS */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.25rem;}
+.proj-card{background:var(--surface);border:1px solid var(--border);border-radius:6px;padding:1.75rem;transition:all .3s;display:flex;flex-direction:column;}
+.proj-card:hover{border-color:var(--green-border);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.proj-num{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:.75rem;}
+.proj-title{font-size:1rem;font-weight:600;margin-bottom:.35rem;}
+.proj-type{font-family:var(--mono);font-size:10px;color:var(--amber);letter-spacing:.12em;margin-bottom:.75rem;}
+.proj-desc{font-size:.85rem;color:var(--text2);line-height:1.7;flex:1;margin-bottom:1rem;}
+.proj-stack{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:1rem;}
+.proj-stack span{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:2px;background:rgba(62,207,255,.07);color:var(--blue);border:1px solid rgba(62,207,255,.13);}
+.proj-link{font-family:var(--mono);font-size:11px;color:var(--green);text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:gap .2s;}
+.proj-link:hover{gap:9px;}
+
+/* TERMINAL */
+.term{background:#060810;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.term-bar{background:#0a0d14;padding:.65rem 1rem;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--border);}
+.dot{width:9px;height:9px;border-radius:50%;}
+.d-r{background:#ff5f57;}.d-y{background:#ffbd2e;}.d-g{background:#27c93f;}
+.term-title{font-family:var(--mono);font-size:10px;color:var(--text3);margin:0 auto;}
+.term-body{padding:1.25rem;font-family:var(--mono);font-size:12px;line-height:1.9;}
+.t-p{color:var(--green);}.t-c{color:var(--text3);}
+.t-o{color:var(--text2);padding-left:.9rem;display:block;}
+.t-ok{color:var(--green);}
+
+/* AI LAB */
+.ai-badge{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;padding:5px 14px;border-radius:2px;background:rgba(167,139,250,.1);color:var(--purple);border:1px solid rgba(167,139,250,.2);margin-bottom:1rem;}
+.ai-intro{text-align:center;margin-bottom:3rem;}
+.ai-intro p{color:var(--text2);font-size:.9rem;max-width:580px;margin:.75rem auto 0;line-height:1.7;}
+.ai-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.ai-tab{font-family:var(--mono);font-size:11px;padding:6px 16px;border-radius:2px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:none;transition:all .2s;}
+.ai-tab.active{background:var(--green-dim);color:var(--green);border-color:var(--green-border);}
+.ai-tab:hover:not(.active){border-color:var(--border2);color:var(--text);}
+.ai-panel{display:none;}.ai-panel.active{display:block;}
+.ai-tool{background:var(--surface);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.ai-tool-header{padding:1rem 1.25rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.ai-tool-title{font-family:var(--mono);font-size:12px;color:var(--text2);}
+.ai-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);}
+.ai-tool-body{padding:1.25rem;}
+.ai-label{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:.1em;margin-bottom:.4rem;}
+textarea.ai-in,input.ai-in{width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:.75rem 1rem;font-family:var(--mono);font-size:13px;color:var(--text);outline:none;transition:border-color .2s;font-family:var(--body);}
+textarea.ai-in{min-height:90px;resize:vertical;}
+textarea.ai-in:focus,input.ai-in:focus{border-color:var(--green-border);}
+.ai-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.ai-field{margin-bottom:1rem;}
+.ai-run{display:inline-flex;align-items:center;gap:7px;padding:.65rem 1.4rem;border-radius:3px;background:var(--green);color:#000;font-family:var(--mono);font-size:12px;font-weight:700;border:none;cursor:none;transition:all .2s;margin-top:.5rem;}
+.ai-run:hover{background:var(--green2);transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,255,136,.25);}
+.ai-run:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+.ai-out{margin-top:1.25rem;background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:1rem;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--text2);min-height:80px;white-space:pre-wrap;display:none;}
+.ai-out.show{display:block;}
+.ai-out .hg{color:var(--green);}.ai-out .ha{color:var(--amber);}.ai-out .hr{color:var(--red);}.ai-out .hb{color:var(--blue);}.ai-out .hp{color:var(--purple);}
+.ai-thinking{display:none;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;color:var(--text3);margin-top:.75rem;}
+.ai-thinking.show{display:flex;}
+.spin{width:14px;height:14px;border:1.5px solid var(--border2);border-top-color:var(--green);border-radius:50%;animation:sp .7s linear infinite;flex-shrink:0;}
+@keyframes sp{to{transform:rotate(360deg);}}
+
+/* CHAT */
+.chat-box{background:var(--bg);border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.chat-msgs{height:320px;overflow-y:auto;padding:1.25rem;display:flex;flex-direction:column;gap:.75rem;}
+.chat-msgs::-webkit-scrollbar{width:2px;}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--green-border);}
+.msg{display:flex;gap:.6rem;align-items:flex-start;}
+.msg.user{flex-direction:row-reverse;}
+.msg-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:10px;flex-shrink:0;}
+.msg-av.ai{background:var(--green-dim);border:1px solid var(--green-border);color:var(--green);}
+.msg-av.user{background:rgba(62,207,255,.1);border:1px solid rgba(62,207,255,.2);color:var(--blue);}
+.msg-bub{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.6rem .9rem;font-size:.82rem;line-height:1.7;color:var(--text2);max-width:75%;}
+.msg.user .msg-bub{background:rgba(62,207,255,.06);border-color:rgba(62,207,255,.12);color:var(--text);}
+.chat-ir{display:flex;gap:.5rem;padding:.75rem 1rem;border-top:1px solid var(--border);}
+.chat-ir input{flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:3px;padding:.55rem .9rem;font-family:var(--body);font-size:13px;color:var(--text);outline:none;transition:border-color .2s;}
+.chat-ir input:focus{border-color:var(--green-border);}
+.chat-send{padding:.55rem 1rem;background:var(--green);color:#000;border:none;border-radius:3px;font-family:var(--mono);font-size:11px;font-weight:700;cursor:none;transition:all .2s;}
+.chat-send:hover{background:var(--green2);}
+.chat-send:disabled{opacity:.5;}
+.suggs{display:flex;gap:.4rem;flex-wrap:wrap;padding:.5rem 1rem;border-top:1px solid var(--border);}
+.sugg{font-family:var(--mono);font-size:10px;padding:3px 9px;border-radius:2px;border:1px solid var(--border);color:var(--text3);background:transparent;cursor:none;transition:all .2s;}
+.sugg:hover{border-color:var(--green-border);color:var(--green);}
+
+/* INTERVIEW */
+.iv-scores{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;margin-top:1rem;}
+.score-card{background:var(--bg);border:1px solid var(--border);border-radius:4px;padding:.75rem;text-align:center;}
+.score-num{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--green);}
+.score-lbl{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:2px;}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;}
+.about-text p{color:var(--text2);line-height:1.8;margin-bottom:.9rem;font-size:.9rem;}
+.about-text strong{color:var(--text);}
+.cert-item{display:flex;align-items:flex-start;gap:.9rem;padding:.9rem;border:1px solid var(--border);border-radius:5px;margin-bottom:.6rem;background:var(--surface);transition:border-color .2s;}
+.cert-item:hover{border-color:var(--green-border);}
+.cert-ico{font-size:18px;flex-shrink:0;margin-top:1px;}
+.cert-name{font-size:.85rem;font-weight:600;}
+.cert-org{font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:2px;}
+
+/* CONTACT */
+.c-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+.c-link{display:flex;align-items:center;gap:8px;padding:.7rem 1.4rem;border:1px solid var(--border);border-radius:3px;font-family:var(--mono);font-size:11px;color:var(--text2);text-decoration:none;background:var(--surface);transition:all .2s;}
+.c-link:hover{border-color:var(--green-border);color:var(--green);background:var(--green-dim);}
+
+/* FOOTER */
+footer{padding:1.75rem 2.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+footer p{font-family:var(--mono);font-size:10px;color:var(--text3);}
+.f-status{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:10px;color:var(--green);}
+.f-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:fp 2s infinite;}
+@keyframes fp{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,255,136,.4);}50%{box-shadow:0 0 0 5px rgba(0,255,136,0);}}
+
+/* FADE IN */
+.fi{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease;}
+.fi.vis{opacity:1;transform:translateY(0);}
+
+/* API KEY SETUP BANNER */
+.key-banner{background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.2);border-radius:6px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-family:var(--mono);font-size:12px;color:var(--amber);line-height:1.7;display:none;}
+.key-banner.show{display:block;}
+.key-banner a{color:var(--amber);text-decoration:underline;}
+
+@media(max-width:768px){nav{padding:.9rem 1.25rem;}.nav-links{display:none;}.sec{padding:3.5rem 1.25rem;}.hero{padding:6rem 1.25rem 3rem;}.about-grid{grid-template-columns:1fr;gap:2rem;}.metrics-bar{grid-template-columns:repeat(2,1fr);}.ai-row{grid-template-columns:1fr;}.iv-scores{grid-template-columns:1fr 1fr;}body{cursor:auto;}#cur,#cur-ring{display:none;}footer{padding:1.25rem;}}
+        </style>
+    </head>
+    <body>
+        <div id="cur"></div>
+        <div id="cur-ring"></div>
+        <nav>
+            <div class="nav-logo">
+                <span>~/</span>karthik-bandi
+            </div>
+            <ul class="nav-links">
+                <li>
+                    <a href="#experience">experience</a>
+                </li>
+                <li>
+                    <a href="#skills">skills</a>
+                </li>
+                <li>
+                    <a href="#projects">projects</a>
+                </li>
+                <li>
+                    <a href="#ai-lab">ai lab</a>
+                </li>
+                <li>
+                    <a href="#contact">contact</a>
+                </li>
+            </ul>
+            <div class="nav-badge">⚡ Open to Work</div>
+        </nav>
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-scanlines"></div>
+            <div class="hero-grid"></div>
+            <div class="hero-glow"></div>
+            <div class="hero-content">
+                <div class="hero-eyebrow">QA AUTOMATION ENGINEER · HYDERABAD, INDIA</div>
+                <h1 class="hero-name">KARTHIK
+                    <br>
+                    <span class="gr">BANDI</span>
+                </h1>
+                <div class="hero-role">
+                    <span id="typed"></span>
+                    <span class="blink"></span>
+                </div>
+                <p class="hero-desc">I don't just run tests — I build quality systems. Shipped QA for a live SaaS platform covering 1 web app + 3 interconnected mobile apps. Built POM frameworks from scratch. Caught critical bugs before real users ever saw them.</p>
+                <div class="hero-stats">
+                    <div>
+                        <div class="stat-num" data-t="200">0</div>
+                        <div class="stat-lbl">TEST CASES</div>
+                    </div>
+                    <div>
+                        <div class="stat-num" data-t="70">0</div>
+                        <div class="stat-lbl">% MANUAL SAVED</div>
+                    </div>
+                    <div>
+                        <div class="stat-num" data-t="12">0</div>
+                        <div class="stat-lbl">CRITICAL BUGS CAUGHT</div>
+                    </div>
+                    <div>
+                        <div class="stat-num" data-t="50">0</div>
+                        <div class="stat-lbl">DEFECTS LOGGED</div>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#ai-lab" class="btn btn-g">⚡ Try AI Lab</a>
+                    <a href="#contact" class="btn btn-o">→ Hire Me</a>
+                    <a href="https://github.com/karthikbandi18" target="_blank" class="btn btn-o">⌥ GitHub</a>
+                    <a href="https://www.linkedin.com/in/karthik-bandi-97a746250/" target="_blank" class="btn btn-o">↗ LinkedIn</a>
+                </div>
+            </div>
+        </section>
+        <!-- METRICS -->
+        <div class="sec sec-alt" style="padding:0;">
+            <div class="metrics-bar fi">
+                <div class="metric-cell">
+                    <span class="metric-big">200+</span>
+                    <span class="metric-sub">TEST CASES</span>
+                    <div class="metric-desc">E2E automated on web</div>
+                </div>
+                <div class="metric-cell">
+                    <span class="metric-big">70%</span>
+                    <span class="metric-sub">AUTO COVERAGE</span>
+                    <div class="metric-desc">Web platform coverage</div>
+                </div>
+                <div class="metric-cell">
+                    <span class="metric-big">50+</span>
+                    <span class="metric-sub">BUGS TRACKED</span>
+                    <div class="metric-desc">Across sprint cycles</div>
+                </div>
+                <div class="metric-cell">
+                    <span class="metric-big">~30%</span>
+                    <span class="metric-sub">FASTER FIXES</span>
+                    <div class="metric-desc">Bug resolution time</div>
+                </div>
+                <div class="metric-cell">
+                    <span class="metric-big">4</span>
+                    <span class="metric-sub">APP ECOSYSTEM</span>
+                    <div class="metric-desc">Web + 3 Mobile apps</div>
+                </div>
+            </div>
+        </div>
+        <!-- EXPERIENCE -->
+        <section class="sec" id="experience">
+            <div class="sec-inner">
+                <div class="sec-label">WORK EXPERIENCE</div>
+                <h2 class="sec-title">Where I've Shipped Quality</h2>
+                <div class="exp-card fi">
+                    <div class="exp-head">
+                        <div>
+                            <div class="exp-role">QA Automation Engineer Intern</div>
+                            <div class="exp-co">Zaktis IT Solutions</div>
+                            <div class="exp-date">Oct 2025 – Apr 2026 · 6 Months · Paid</div>
+                        </div>
+                        <div class="exp-tag">LIVE PRODUCTION</div>
+                    </div>
+                    <div style="padding:.9rem 1rem;background:rgba(0,255,136,.04);border-radius:4px;border:1px solid var(--green-border);margin-bottom:1.25rem;">
+                        <div style="font-family:var(--mono);font-size:10px;color:var(--green);margin-bottom:4px;">PROJECT</div>
+                        <div style="font-weight:600;font-size:.95rem;">Homi365 — Community Management Platform</div>
+                        <div style="font-family:var(--mono);font-size:10px;color:var(--text2);margin-top:3px;">Web App + Admin App + Member App + Security App</div>
+                    </div>
+                    <div class="exp-sub">WEB AUTOMATION · Selenium + TestNG + POM</div>
+                    <ul class="exp-ul">
+                        <li>Engineered
+                            <strong>200+ end-to-end test cases</strong> — community registration, authentication, block/unit management, role-based access — achieving
+                            <strong>70% automation coverage</strong>
+                        </li>
+                        <li>Architected
+                            <strong>POM framework from scratch</strong> — folder structure, base classes, reusable utilities — cutting maintenance effort by ~40%
+                        </li>
+                        <li>Built test plans per sprint cycle defining scope, entry/exit criteria — covering Smoke, Sanity, Regression, and UAT phases</li>
+                        <li>Tracked
+                            <strong>50+ defects in JIRA</strong> with severity classification — reducing resolution time by ~30%
+                        </li>
+                        <li>Delivered structured execution reports via Soft Assertions + TestNG before every release</li>
+                    </ul>
+                    <div class="exp-sub">MOBILE AUTOMATION · Appium + Java (3 Apps)</div>
+                    <ul class="exp-ul">
+                        <li>Automated
+                            <strong>Admin App</strong> workflows — intercepted
+                            <strong>12+ critical sync defects</strong> between web and mobile before production
+                        </li>
+                        <li>Executed financial transaction flows for
+                            <strong>Member App</strong> across
+                            <strong>5+ real Android devices</strong> — Samsung, Redmi, Realme on Android 11–14
+                        </li>
+                        <li>Validated guest entry + visitor approval workflows for
+                            <strong>Security App</strong> — full P0 journey coverage before go-live
+                        </li>
+                        <li>End-to-end integration testing + API validation (Postman + Rest Assured) across 4-app ecosystem — cut manual testing time by
+                            <strong>70%</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- SKILLS -->
+        <section class="sec sec-alt" id="skills">
+            <div class="sec-inner">
+                <div class="sec-label">TECHNICAL ARSENAL</div>
+                <h2 class="sec-title">Stack & Tools</h2>
+                <div class="skills-grid">
+                    <div class="sk-card fi">
+                        <div class="sk-icon">⚙️</div>
+                        <div class="sk-title">Automation</div>
+                        <div class="tags">
+                            <span class="tag on">Selenium WebDriver</span>
+                            <span class="tag on">Appium</span>
+                            <span class="tag">Android</span>
+                            <span class="tag">iOS</span>
+                        </div>
+                    </div>
+                    <div class="sk-card fi">
+                        <div class="sk-icon">🧪</div>
+                        <div class="sk-title">Frameworks</div>
+                        <div class="tags">
+                            <span class="tag on">TestNG</span>
+                            <span class="tag on">Cucumber BDD</span>
+                            <span class="tag on">POM</span>
+                            <span class="tag">Data-Driven</span>
+                            <span class="tag">Gherkin</span>
+                        </div>
+                    </div>
+                    <div class="sk-card fi">
+                        <div class="sk-icon">🔌</div>
+                        <div class="sk-title">API Testing</div>
+                        <div class="tags">
+                            <span class="tag on">Postman</span>
+                            <span class="tag on">Rest Assured</span>
+                            <span class="tag">REST APIs</span>
+                            <span class="tag">JSON</span>
+                        </div>
+                    </div>
+                    <div class="sk-card fi">
+                        <div class="sk-icon">💻</div>
+                        <div class="sk-title">Languages & DB</div>
+                        <div class="tags">
+                            <span class="tag on">Java</span>
+                            <span class="tag">Python</span>
+                            <span class="tag on">SQL</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                    <div class="sk-card fi">
+                        <div class="sk-icon">🔧</div>
+                        <div class="sk-title">Build & CI/CD</div>
+                        <div class="tags">
+                            <span class="tag on">Maven</span>
+                            <span class="tag">Jenkins</span>
+                            <span class="tag on">Git</span>
+                            <span class="tag">GitHub</span>
+                            <span class="tag">WebDriverManager</span>
+                        </div>
+                    </div>
+                    <div class="sk-card fi">
+                        <div class="sk-icon">📋</div>
+                        <div class="sk-title">Testing Types & Tools</div>
+                        <div class="tags">
+                            <span class="tag">Smoke</span>
+                            <span class="tag">Regression</span>
+                            <span class="tag">UAT</span>
+                            <span class="tag">Integration</span>
+                            <span class="tag on">JIRA</span>
+                            <span class="tag">Bugzilla</span>
+                            <span class="tag">Apache POI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PROJECTS -->
+        <section class="sec" id="projects">
+            <div class="sec-inner">
+                <div class="sec-label">PROJECTS</div>
+                <h2 class="sec-title">Things I've Built & Tested</h2>
+                <div class="proj-grid">
+                    <div class="proj-card fi">
+                        <div class="proj-num">01 · INTERNSHIP · LIVE PRODUCTION</div>
+                        <div class="proj-title">Homi365 — 4-App Ecosystem QA</div>
+                        <div class="proj-type">WEB + MOBILE · LIVE SAAS</div>
+                        <div class="proj-desc">QA for a live deployed community management platform. POM framework from scratch, 200+ automated test cases, integration testing across web + 3 mobile apps. Caught 12 critical sync defects before production.</div>
+                        <div class="proj-stack">
+                            <span>Selenium</span>
+                            <span>Appium</span>
+                            <span>Java</span>
+                            <span>TestNG</span>
+                            <span>Postman</span>
+                            <span>Rest Assured</span>
+                            <span>JIRA</span>
+                        </div>
+                        <a href="https://github.com/karthikbandi18" target="_blank" class="proj-link">View GitHub →</a>
+                    </div>
+                    <div class="proj-card fi">
+                        <div class="proj-num">02 · MOBILE AUTOMATION</div>
+                        <div class="proj-title">Sports Ground Booking APK</div>
+                        <div class="proj-type">ANDROID · APPIUM · E2E</div>
+                        <div class="proj-desc">Full mobile automation suite for a Sports Ground Booking APK. Configured Android SDK for real device + emulator environments. Uncovered 15+ mobile-specific defects including touch event failures and layout rendering issues.</div>
+                        <div class="proj-stack">
+                            <span>Appium</span>
+                            <span>Java</span>
+                            <span>TestNG</span>
+                            <span>Android Studio</span>
+                            <span>JIRA</span>
+                        </div>
+                        <a href="https://github.com/karthikbandi18" target="_blank" class="proj-link">View GitHub →</a>
+                    </div>
+                    <div class="proj-card fi">
+                        <div class="proj-num">03 · DATA-DRIVEN FRAMEWORK</div>
+                        <div class="proj-title">Gmail Automation Suite</div>
+                        <div class="proj-type">SELENIUM · TESTNG · MAVEN · CI/CD</div>
+                        <div class="proj-desc">Scalable data-driven framework with @DataProvider + Apache POI across 50+ Excel datasets. Cross-browser via WebDriverManager. Jenkins CI/CD pipeline integration for automated execution on every commit.</div>
+                        <div class="proj-stack">
+                            <span>Selenium</span>
+                            <span>Java</span>
+                            <span>TestNG</span>
+                            <span>Maven</span>
+                            <span>Apache POI</span>
+                            <span>Jenkins</span>
+                        </div>
+                        <a href="https://github.com/karthikbandi18" target="_blank" class="proj-link">View GitHub →</a>
+                    </div>
+                    <div class="proj-card fi">
+                        <div class="proj-num">04 · MANUAL TESTING</div>
+                        <div class="proj-title">Conference Ticket Generator</div>
+                        <div class="proj-type">FUNCTIONAL · ACCESSIBILITY · CROSS-BROWSER</div>
+                        <div class="proj-desc">E2E manual testing — form submissions, validation, responsiveness, cross-browser compatibility, accessibility features including keyboard navigation and screen readers. UI/UX bug reporting tracked to closure.</div>
+                        <div class="proj-stack">
+                            <span>Manual Testing</span>
+                            <span>Cross-browser</span>
+                            <span>Accessibility</span>
+                            <span>Bug Reporting</span>
+                        </div>
+                        <a href="https://github.com/karthikbandi18" target="_blank" class="proj-link">View GitHub →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- TERMINAL -->
+        <section class="sec sec-alt">
+            <div class="sec-inner">
+                <div class="sec-label">QA PHILOSOPHY</div>
+                <h2 class="sec-title">How I Think About Quality</h2>
+                <div class="term fi">
+                    <div class="term-bar">
+                        <div class="dot d-r"></div>
+                        <div class="dot d-y"></div>
+                        <div class="dot d-g"></div>
+                        <div class="term-title">karthik@qa ~ quality-mindset.sh</div>
+                    </div>
+                    <div class="term-body">
+                        <div>
+                            <span class="t-p">$</span>cat qa-rules.txt
+                        </div>
+                        <br>
+                        <div>
+                            <span class="t-c"># Rule 1: Test the ecosystem, not just the component</span>
+                        </div>
+                        <span class="t-o">Tested 4 apps individually — all passed. Tested together → 12 critical sync failures found.</span>
+                        <span class="t-o" style="color:var(--green);">Integration testing is where real bugs hide.</span>
+                        <br>
+                        <div>
+                            <span class="t-c"># Rule 2: Real devices catch real bugs</span>
+                        </div>
+                        <span class="t-o">Emulators passed. Samsung + Redmi + Realme devices failed. Every time.</span>
+                        <span class="t-o" style="color:var(--green);">Never ship without real hardware testing.</span>
+                        <br>
+                        <div>
+                            <span class="t-c"># Rule 3: Shift left — catch it before it's built</span>
+                        </div>
+                        <span class="t-o">Sprint planning reviews caught design issues before any code was written.</span>
+                        <span class="t-o" style="color:var(--green);">The best bug is the one the developer never has to fix.</span>
+                        <br>
+                        <div>
+                            <span class="t-c"># Rule 4: Automation is a product, not a script</span>
+                        </div>
+                        <span class="t-o">Built POM framework so any team member adds a flow in under 30 minutes.</span>
+                        <span class="t-o" style="color:var(--green);">If your test framework needs a PhD to extend, it's a liability.</span>
+                        <br>
+                        <div>
+                            <span class="t-p">$</span>
+                            <span class="blink"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- AI LAB -->
+        <section class="sec" id="ai-lab">
+            <div class="sec-inner">
+                <div class="ai-intro fi">
+                    <div class="ai-badge">⚡ POWERED BY CLAUDE AI</div>
+                    <div class="sec-label" style="justify-content:center;">AI CAPABILITIES LAB</div>
+                    <h2 class="sec-title">What No Human Portfolio Can Do</h2>
+                    <p>Live AI tools that demonstrate QA thinking in real-time. Generate a professional bug report. Write full test cases from a user story. Ask anything about my experience. Practice QA interview questions with real evaluation.</p>
+                </div>
+                <!-- API KEY SETUP -->
+                <div class="key-banner show" id="key-banner">
+                    ⚠️
+                    <strong>For recruiters / visitors:</strong> To enable AI features, open your browser console and run:
+                    <br>
+                    <code style="color:var(--text);">localStorage.setItem('claude_key', 'YOUR_ANTHROPIC_API_KEY')</code>
+                    <br>
+                    Then refresh the page. Get a free API key at
+                    <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a>
+                    — the features then work live.
+                    <br>
+                    <br>
+                    <strong>For Karthik:</strong>
+                    Add your own key so interviewers/recruiters can see the AI working when you demo this live.
+                </div>
+                <div class="fi">
+                    <div class="ai-tabs">
+                        <button class="ai-tab active" onclick="switchTab('chat')">💬 Ask Me Anything</button>
+                        <button class="ai-tab" onclick="switchTab('buggen')">🐛 Bug Report Generator</button>
+                        <button class="ai-tab" onclick="switchTab('tcgen')">📋 Test Case Generator</button>
+                        <button class="ai-tab" onclick="switchTab('interview')">🎯 Interview Simulator</button>
+                    </div>
+                    <!-- CHAT -->
+                    <div class="ai-panel active" id="panel-chat">
+                        <div class="ai-tool">
+                            <div class="ai-tool-header">
+                                <div class="ai-dot"></div>
+                                <div class="ai-tool-title">AI Proxy — Ask anything about Karthik's experience, skills, or QA thinking</div>
+                            </div>
+                            <div class="chat-box">
+                                <div class="chat-msgs" id="chat-msgs">
+                                    <div class="msg">
+                                        <div class="msg-av ai">KB</div>
+                                        <div class="msg-bub">Hi! I'm Karthik's AI proxy. I know everything about his experience — the Homi365 live platform, the 4-app ecosystem, the POM framework he built from scratch, the 12 critical sync bugs caught before production. Ask me anything a senior QA would want to know.</div>
+                                    </div>
+                                </div>
+                                <div class="suggs">
+                                    <button class="sugg" onclick="sendSugg(this)">How did you handle test data management?</button>
+                                    <button class="sugg" onclick="sendSugg(this)">Explain your POM framework architecture</button>
+                                    <button class="sugg" onclick="sendSugg(this)">How did you find the 12 sync bugs?</button>
+                                    <button class="sugg" onclick="sendSugg(this)">What's your defect lifecycle process?</button>
+                                </div>
+                                <div class="chat-ir">
+                                    <input
+                                        id="chat-input"
+                                        type="text"
+                                        placeholder="Ask about my experience, projects, or QA approach..."
+                                        onkeydown="if(event.key==='Enter')sendChat()"
+                                    >
+                                    <button class="chat-send" id="chat-send-btn" onclick="sendChat()">Send →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BUG REPORT -->
+                    <div class="ai-panel" id="panel-buggen">
+                        <div class="ai-tool">
+                            <div class="ai-tool-header">
+                                <div class="ai-dot"></div>
+                                <div class="ai-tool-title">Bug Report Generator — Describe any bug scenario, get a professional JIRA-ready report</div>
+                            </div>
+                            <div class="ai-tool-body">
+                                <div class="ai-row">
+                                    <div class="ai-field">
+                                        <div class="ai-label">BUG SCENARIO — WHAT YOU OBSERVED</div>
+                                        <textarea class="ai-in" id="bug-scenario" placeholder="e.g. When a user logs into the mobile app and opens the web app simultaneously, the profile data doesn't sync and shows stale information from the previous session..."></textarea>
+                                    </div>
+                                    <div>
+                                        <div class="ai-field">
+                                            <div class="ai-label">ENVIRONMENT</div>
+                                            <input
+                                                class="ai-in"
+                                                id="bug-env"
+                                                type="text"
+                                                placeholder="e.g. Android 13, Chrome 120, Staging"
+                                            >
+                                        </div>
+                                        <div class="ai-field">
+                                            <div class="ai-label">SEVERITY</div>
+                                            <input
+                                                class="ai-in"
+                                                id="bug-sev"
+                                                type="text"
+                                                placeholder="e.g. Critical / Major / Minor"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="ai-run" id="bug-btn" onclick="generateBugReport()">🐛 Generate Bug Report</button>
+                                <div class="ai-thinking" id="bug-thinking">
+                                    <div class="spin"></div>
+                                    <span id="bug-think-txt">Analyzing scenario...</span>
+                                </div>
+                                <div class="ai-out" id="bug-out"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- TEST CASES -->
+                    <div class="ai-panel" id="panel-tcgen">
+                        <div class="ai-tool">
+                            <div class="ai-tool-header">
+                                <div class="ai-dot"></div>
+                                <div class="ai-tool-title">Test Case Generator — Paste a user story, get complete test cases with automation mapping</div>
+                            </div>
+                            <div class="ai-tool-body">
+                                <div class="ai-row">
+                                    <div class="ai-field">
+                                        <div class="ai-label">USER STORY / FEATURE DESCRIPTION</div>
+                                        <textarea class="ai-in" id="tc-story" placeholder="e.g. As a community admin, I want to approve or reject visitor entry requests from the mobile app so that building security is controlled in real-time..."></textarea>
+                                    </div>
+                                    <div>
+                                        <div class="ai-field">
+                                            <div class="ai-label">TESTING TYPE</div>
+                                            <input
+                                                class="ai-in"
+                                                id="tc-type"
+                                                type="text"
+                                                placeholder="e.g. Functional, Integration, Mobile"
+                                            >
+                                        </div>
+                                        <div class="ai-field">
+                                            <div class="ai-label">NUMBER OF TEST CASES</div>
+                                            <input
+                                                class="ai-in"
+                                                id="tc-count"
+                                                type="text"
+                                                value="5"
+                                                placeholder="e.g. 5"
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="ai-run" id="tc-btn" onclick="generateTestCases()">📋 Generate Test Cases</button>
+                                <div class="ai-thinking" id="tc-thinking">
+                                    <div class="spin"></div>
+                                    <span>Designing test cases with boundary conditions...</span>
+                                </div>
+                                <div class="ai-out" id="tc-out"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- INTERVIEW -->
+                    <div class="ai-panel" id="panel-interview">
+                        <div class="ai-tool">
+                            <div class="ai-tool-header">
+                                <div class="ai-dot"></div>
+                                <div class="ai-tool-title">QA Interview Simulator — Answer real QA interview questions, get scored by an AI senior QA</div>
+                            </div>
+                            <div class="ai-tool-body">
+                                <div id="iv-qbox" style="background:var(--bg);border:1px solid var(--green-border);border-radius:4px;padding:1rem;margin-bottom:1rem;font-size:.9rem;line-height:1.7;color:var(--text);display:none;"></div>
+                                <div style="display:flex;gap:.75rem;margin-bottom:1rem;flex-wrap:wrap;">
+                                    <button class="ai-run" style="margin-top:0;" onclick="getQ()">🎯 Get a Question</button>
+                                    <button class="ai-run" style="margin-top:0;background:var(--surface);color:var(--text2);border:1px solid var(--border);" onclick="getQ('hard')">💀 Hard Mode</button>
+                                </div>
+                                <div class="ai-field" id="iv-area" style="display:none;">
+                                    <div class="ai-label">YOUR ANSWER</div>
+                                    <textarea
+                                        class="ai-in"
+                                        id="iv-answer"
+                                        placeholder="Write your answer here — be as detailed as you would in a real interview..."
+                                        style="min-height:110px;"
+                                    ></textarea>
+                                    <button
+                                        class="ai-run"
+                                        id="iv-btn"
+                                        onclick="evalAnswer()"
+                                        style="margin-top:.5rem;"
+                                    >⚡ Evaluate My Answer</button>
+                                </div>
+                                <div class="ai-thinking" id="iv-thinking">
+                                    <div class="spin"></div>
+                                    <span>Evaluating like a senior QA interviewer...</span>
+                                </div>
+                                <div class="ai-out" id="iv-out"></div>
+                                <div class="iv-scores" id="iv-scores" style="display:none;">
+                                    <div class="score-card">
+                                        <div class="score-num" id="sc1">-</div>
+                                        <div class="score-lbl">TECHNICAL</div>
+                                    </div>
+                                    <div class="score-card">
+                                        <div class="score-num" id="sc2">-</div>
+                                        <div class="score-lbl">CLARITY</div>
+                                    </div>
+                                    <div class="score-card">
+                                        <div class="score-num" id="sc3">-</div>
+                                        <div class="score-lbl">DEPTH</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ABOUT -->
+        <section class="sec sec-alt" id="about">
+            <div class="sec-inner">
+                <div class="about-grid">
+                    <div class="about-text fi">
+                        <div class="sec-label">ABOUT</div>
+                        <h2 class="sec-title" style="font-size:2.5rem;margin-bottom:1.25rem;">The Story Behind The Tests</h2>
+                        <p>I'm a QA Automation Engineer from Hyderabad with a
+                            <strong>B.Tech in Computer Science</strong> from Vaagdevi Engineering College. My pull toward QA is simple: I'm drawn to finding what breaks before users do.
+                        </p>
+                        <p>During my
+                            <strong>6-month paid internship at Zaktis IT Solutions</strong>, I didn't follow a test plan — I built one from scratch for every sprint, owned the framework architecture, and operated as a full QA engineer, not just an intern.
+                        </p>
+                        <p>What sets me apart: I've tested a
+                            <strong>live, deployed production platform</strong> with real users. The 12 sync bugs I caught before production — those would have been real user-facing failures. That mindset is what I bring to every role.
+                        </p>
+                        <p>Actively seeking QA Automation Engineer roles where I can
+                            <strong>own quality end-to-end</strong>, not just execute test cases.
+                        </p>
+                    </div>
+                    <div class="fi">
+                        <div class="sec-label">CREDENTIALS</div>
+                        <h2 class="sec-title" style="font-size:2.5rem;margin-bottom:1.25rem;">Education & Certs</h2>
+                        <div class="cert-item">
+                            <div class="cert-ico">🎓</div>
+                            <div>
+                                <div class="cert-name">B.Tech — Computer Science & Engineering</div>
+                                <div class="cert-org">Vaagdevi Engineering College · 2020–2024 · CGPA: 7.19/10</div>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-ico">📜</div>
+                            <div>
+                                <div class="cert-name">Selenium WebDriver with Java</div>
+                                <div class="cert-org">Automation Framework Development</div>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-ico">📱</div>
+                            <div>
+                                <div class="cert-name">Appium Mobile Testing: Android & iOS</div>
+                                <div class="cert-org">Udemy · 2024</div>
+                            </div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-ico">✅</div>
+                            <div>
+                                <div class="cert-name">Manual Testing Fundamentals</div>
+                                <div class="cert-org">SDLC, STLC, Test Case Design & Bug Reporting</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- CONTACT -->
+        <section class="sec" id="contact">
+            <div class="sec-inner" style="text-align:center;">
+                <div class="sec-label" style="justify-content:center;">CONTACT</div>
+                <h2 class="sec-title">Let's Build Quality Together</h2>
+                <p style="color:var(--text2);max-width:520px;margin:.5rem auto 2rem;font-size:.9rem;line-height:1.7;">Actively looking for QA Automation Engineer roles in Hyderabad or remote. If you're hiring — let's talk.</p>
+                <div class="c-links">
+                    <a href="mailto:karthikbandi188@gmail.com" class="c-link">✉ karthikbandi188@gmail.com</a>
+                    <a href="tel:+917780257812" class="c-link">📞 +91 7780257812</a>
+                    <a href="https://www.linkedin.com/in/karthik-bandi-97a746250/" target="_blank" class="c-link">↗ LinkedIn</a>
+                    <a href="https://github.com/karthikbandi18" target="_blank" class="c-link">⌥ GitHub</a>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <p>© 2026 Karthik Bandi · Built with precision. Tested end-to-end.</p>
+            <div class="f-status">
+                <div class="f-dot"></div>Available for hire · Hyderabad</div>
+        </footer>
+        <script>
+// CURSOR
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function loop(){cur.style.transform=`translate(${mx-3}px,${my-3}px)`;rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.transform=`translate(${rx-14}px,${ry-14}px)`;requestAnimationFrame(loop);})();
+
+// TYPED
+const roles=['Selenium WebDriver Engineer','Appium Mobile Tester','Test Framework Architect','Integration Test Specialist','BDD / Cucumber Practitioner'];
+let ri=0,ci=0,del=false;
+const tel=document.getElementById('typed');
+function type(){const w=roles[ri];if(!del){tel.textContent=w.slice(0,++ci);if(ci===w.length){del=true;setTimeout(type,1900);return;}}else{tel.textContent=w.slice(0,--ci);if(ci===0){del=false;ri=(ri+1)%roles.length;}}setTimeout(type,del?45:75);}
+type();
+
+// COUNTERS
+function runCounters(){document.querySelectorAll('[data-t]').forEach(el=>{const t=+el.dataset.t;let c=0;const s=t/55;const iv=setInterval(()=>{c=Math.min(c+s,t);el.textContent=Math.floor(c)+(t>=100?'+':t===70?'%':'');if(c>=t)clearInterval(iv);},18);});}
+const hObs=new IntersectionObserver(e=>{if(e[0].isIntersecting){runCounters();hObs.disconnect();}},{threshold:.3});
+hObs.observe(document.querySelector('.hero-stats'));
+
+// FADE IN
+const obs=new IntersectionObserver(e=>e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('vis');}),{threshold:.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+
+// TABS
+function switchTab(id){
+  document.querySelectorAll('.ai-tab').forEach((t,i)=>t.classList.toggle('active',['chat','buggen','tcgen','interview'][i]===id));
+  document.querySelectorAll('.ai-panel').forEach(p=>p.classList.toggle('active',p.id===`panel-${id}`));
+}
+
+// API
+async function callClaude(messages,system=''){
+  const key=localStorage.getItem('claude_key')||'';
+  const headers={'Content-Type':'application/json','anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'};
+  if(key)headers['x-api-key']=key;
+  const body={model:'claude-sonnet-4-20250514',max_tokens:1000,messages};
+  if(system)body.system=system;
+  const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers,body:JSON.stringify(body)});
+  if(!r.ok){const e=await r.json();throw new Error(e.error?.message||'API error');}
+  const d=await r.json();
+  return d.content?.map(c=>c.text||'').join('')||'';
+}
+
+// KARTHIK SYSTEM PROMPT
+const SYS=`You are an AI proxy for Karthik Bandi, a QA Automation Engineer from Hyderabad, India. Answer questions as if you ARE Karthik, in first person. Be confident, specific, and demonstrate deep QA knowledge.
+
+BACKGROUND:
+- 6 months paid internship at Zaktis IT Solutions (Oct 2025 – Apr 2026)
+- Project: Homi365 — live SaaS community management platform
+- Tested: 1 web app + Admin App + Member App + Security App (3 mobile apps)
+- Built POM framework from scratch: folder structure, base classes, reusable utilities, config management
+- 200+ automated test cases, 70% automation coverage on web platform
+- 50+ defects tracked in JIRA with severity/priority classification, ~30% faster resolution
+- 12 critical sync defects caught between web and mobile before production release
+- 70% reduction in manual testing time
+- Mobile tested on 5+ real devices: Samsung, Redmi, Realme — Android 11-14
+- Tech: Selenium WebDriver, Appium, Java, TestNG, Cucumber BDD, Postman, Rest Assured, Maven, Jenkins, Git, JIRA, Bugzilla, Apache POI, SQL/MySQL
+- Testing types: Smoke, Sanity, Regression, UAT, Integration, E2E, Cross-browser, Mobile, Blackbox, Whitebox
+- Projects: Sports Ground Booking APK (Appium+Java+TestNG), Gmail Data-Driven Suite (Selenium+POI+Maven), Conference Ticket Generator (manual)
+- Education: B.Tech CSE, Vaagdevi Engineering College, CGPA 7.19, 2020-2024
+- Certifications: Selenium WebDriver with Java, Appium Mobile Testing Udemy 2024, Manual Testing Fundamentals
+
+QA PHILOSOPHY: Integration testing is where real bugs hide. Never trust emulators alone. Shift-left testing. Automation frameworks must be extensible.
+
+Be concise but technically deep. Speak like a confident junior engineer who punches above their weight.`;
+
+// CHAT
+let history=[];
+async function sendChat(){
+  const inp=document.getElementById('chat-input');
+  const btn=document.getElementById('chat-send-btn');
+  const msg=inp.value.trim();if(!msg)return;
+  inp.value='';btn.disabled=true;
+  addMsg(msg,'user');
+  const tmp=addMsg('thinking...','ai',true);
+  history.push({role:'user',content:msg});
+  try{
+    const reply=await callClaude(history,SYS);
+    history.push({role:'assistant',content:reply});
+    tmp.remove();addMsg(reply,'ai');
+  }catch(e){tmp.remove();addMsg('⚠️ Add your Anthropic API key via console: localStorage.setItem("claude_key","sk-ant-...")','ai');}
+  btn.disabled=false;
+}
+function addMsg(text,who,temp=false){
+  const box=document.getElementById('chat-msgs');
+  const d=document.createElement('div');d.className=`msg ${who}`;
+  d.innerHTML=`<div class="msg-av ${who}">${who==='ai'?'KB':'You'}</div><div class="msg-bub">${text.replace(/\n/g,'<br>')}</div>`;
+  box.appendChild(d);box.scrollTop=box.scrollHeight;return d;
+}
+function sendSugg(btn){document.getElementById('chat-input').value=btn.textContent;sendChat();}
+document.getElementById('chat-input').addEventListener('keydown',e=>{if(e.key==='Enter')sendChat();});
+
+// BUG REPORT
+async function generateBugReport(){
+  const scenario=document.getElementById('bug-scenario').value.trim();
+  const env=document.getElementById('bug-env').value.trim()||'Not specified';
+  const sev=document.getElementById('bug-sev').value.trim()||'Major';
+  if(!scenario){alert('Please describe the bug scenario.');return;}
+  const btn=document.getElementById('bug-btn');
+  const thinking=document.getElementById('bug-thinking');
+  const out=document.getElementById('bug-out');
+  btn.disabled=true;thinking.classList.add('show');out.classList.remove('show');
+  const msgs=['Analyzing scenario...','Identifying root cause...','Structuring the report...','Adding reproduction steps...'];
+  let mi=0;const miv=setInterval(()=>{document.getElementById('bug-think-txt').textContent=msgs[mi++%msgs.length];},800);
+  try{
+    const id='BUG-'+Math.floor(Math.random()*900+100);
+    const r=await callClaude([{role:'user',content:`You are a senior QA engineer. Generate a professional bug report.
+
+Scenario: ${scenario}
+Environment: ${env}
+Severity: ${sev}
+
+Format EXACTLY:
+
+BUG ID: ${id}
+TITLE: [concise title]
+SEVERITY: ${sev}
+PRIORITY: [High/Medium/Low]
+STATUS: Open
+ENVIRONMENT: ${env}
+
+DESCRIPTION:
+[2-3 sentence description]
+
+STEPS TO REPRODUCE:
+1. [step]
+2. [step]
+3. [step]
+4. [step]
+
+EXPECTED RESULT:
+[what should happen]
+
+ACTUAL RESULT:
+[what actually happens]
+
+ROOT CAUSE HYPOTHESIS:
+[technical hypothesis]
+
+IMPACT:
+[user/business impact]
+
+ATTACHMENTS NEEDED:
+[logs/screenshots needed]`}]);
+    clearInterval(miv);
+    out.innerHTML=fmt(r);out.classList.add('show');
+  }catch(e){clearInterval(miv);out.textContent='⚠️ Add API key: localStorage.setItem("claude_key","sk-ant-...")';out.classList.add('show');}
+  btn.disabled=false;thinking.classList.remove('show');
+}
+
+// TEST CASES
+async function generateTestCases(){
+  const story=document.getElementById('tc-story').value.trim();
+  const type=document.getElementById('tc-type').value.trim()||'Functional';
+  const count=document.getElementById('tc-count').value.trim()||'5';
+  if(!story){alert('Please describe the feature or user story.');return;}
+  const btn=document.getElementById('tc-btn');
+  const thinking=document.getElementById('tc-thinking');
+  const out=document.getElementById('tc-out');
+  btn.disabled=true;thinking.classList.add('show');out.classList.remove('show');
+  try{
+    const r=await callClaude([{role:'user',content:`Senior QA engineer. Generate ${count} ${type} test cases for:
+
+"${story}"
+
+Format EXACTLY for each:
+
+TC-01: [Title]
+Type: ${type}
+Priority: [High/Medium/Low]
+Preconditions: [prerequisites]
+Steps:
+  1. [step]
+  2. [step]
+  3. [step]
+Expected Result: [outcome]
+Automation: [Yes/No] | Tool: [Selenium/Appium/Postman/Manual]
+---
+
+Cover: happy path, negative cases, edge cases, boundary conditions. Be specific.`}]);
+    out.innerHTML=fmt(r);out.classList.add('show');
+  }catch(e){out.textContent='⚠️ Add API key: localStorage.setItem("claude_key","sk-ant-...")';out.classList.add('show');}
+  btn.disabled=false;thinking.classList.remove('show');
+}
+
+// INTERVIEW
+const QS={
+  normal:[
+    "Explain the Page Object Model. Why did you choose it for Homi365 and what specific problems did it solve for your team?",
+    "You caught 12 critical sync defects between web and mobile. Walk me through exactly how you identified and reproduced one of those bugs.",
+    "What's the difference between Smoke, Sanity, and Regression testing? Give a real example of when you used each during your internship.",
+    "How do you decide which test cases to automate vs keep manual? Give a concrete example from your project.",
+    "You tested on 5+ real Android devices. What bugs did you find on real devices that emulators missed? Why does that happen?",
+    "Walk me through your defect lifecycle — from discovery to closure. How did you handle pushback from developers?",
+    "How did you handle test data management across 200+ test cases? What challenges did you face and how did you solve them?",
+  ],
+  hard:[
+    "Your 200 automated tests now take 4 hours to run. A developer needs feedback in 30 minutes before a hotfix deploy. What exactly do you do? Walk me through every decision.",
+    "Explain how you would detect a race condition bug in real-time sync between the Admin App and web platform. What tools, what approach, what code?",
+    "If your POM framework needs to support both Android and iOS from the same test scripts, design the class hierarchy. Show me the structure.",
+    "You have 10 tests failing after a major release. How do you triage — which are real product bugs vs broken tests? What's your exact process?",
+    "How would you design a complete CI/CD quality gate from code commit to production? What checks at each stage, what tools, what thresholds?",
+    "Explain test flakiness. How do you identify flaky tests, fix them, and prevent future ones? Give a strategy with specific patterns you'd use.",
+    "A new feature has no requirements document. How do you create a complete test strategy from zero? Walk me through every single step.",
+  ]
+};
+let currentQ='';
+function getQ(mode='normal'){
+  const arr=QS[mode];
+  currentQ=arr[Math.floor(Math.random()*arr.length)];
+  const qb=document.getElementById('iv-qbox');
+  qb.style.display='block';
+  qb.innerHTML=`<span style="font-family:var(--mono);font-size:10px;color:${mode==='hard'?'var(--red)':'var(--amber)'};letter-spacing:.1em;">${mode==='hard'?'💀 HARD MODE':'🎯 INTERVIEW QUESTION'}</span><br><br>${currentQ}`;
+  document.getElementById('iv-area').style.display='block';
+  document.getElementById('iv-answer').value='';
+  document.getElementById('iv-out').classList.remove('show');
+  document.getElementById('iv-scores').style.display='none';
+}
+async function evalAnswer(){
+  const ans=document.getElementById('iv-answer').value.trim();
+  if(!ans||!currentQ){alert(!currentQ?'Get a question first.':'Write your answer first.');return;}
+  const btn=document.getElementById('iv-btn');
+  const thinking=document.getElementById('iv-thinking');
+  const out=document.getElementById('iv-out');
+  btn.disabled=true;thinking.classList.add('show');out.classList.remove('show');
+  try{
+    const r=await callClaude([{role:'user',content:`You are a strict senior QA engineer (8+ years) interviewing for a QA Automation Engineer role.
+
+Question: "${currentQ}"
+Answer: "${ans}"
+
+Evaluate honestly. Format EXACTLY:
+
+OVERALL VERDICT: [Strong/Good/Needs Work/Poor]
+
+TECHNICAL SCORE: [X/10]
+CLARITY SCORE: [X/10]
+DEPTH SCORE: [X/10]
+
+WHAT WAS GOOD:
+[2-3 specific strengths]
+
+WHAT WAS MISSING:
+[2-3 specific gaps]
+
+IDEAL ANSWER WOULD INCLUDE:
+[key points a strong candidate covers]
+
+FOLLOW-UP QUESTION:
+[tough follow-up a real interviewer would ask]
+
+Be brutally honest. Specifics only — no fluff.`}]);
+    out.innerHTML=fmt(r);out.classList.add('show');
+    const t=r.match(/TECHNICAL SCORE:\s*(\d+)/i);
+    const c=r.match(/CLARITY SCORE:\s*(\d+)/i);
+    const d=r.match(/DEPTH SCORE:\s*(\d+)/i);
+    if(t&&c&&d){
+      document.getElementById('sc1').textContent=t[1]+'/10';
+      document.getElementById('sc2').textContent=c[1]+'/10';
+      document.getElementById('sc3').textContent=d[1]+'/10';
+      document.getElementById('iv-scores').style.display='grid';
+    }
+  }catch(e){out.textContent='⚠️ Add API key: localStorage.setItem("claude_key","sk-ant-...")';out.classList.add('show');}
+  btn.disabled=false;thinking.classList.remove('show');
+}
+
+// FORMAT OUTPUT
+function fmt(t){
+  return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/(Strong|STRONG|✅|PASS|Good Answer)/g,'<span class="hg">$1</span>')
+    .replace(/(ERROR|FAIL|Poor|Needs Work|WEAK|❌|CRITICAL|BUG-\d+)/g,'<span class="hr">$1</span>')
+    .replace(/(TITLE:|SEVERITY:|PRIORITY:|STATUS:|EXPECTED RESULT:|ACTUAL RESULT:|TC-\d+:|OVERALL VERDICT:|TECHNICAL SCORE:|CLARITY SCORE:|DEPTH SCORE:|BUG ID:)/g,'<span class="ha">$1</span>')
+    .replace(/(Selenium|Appium|TestNG|POM|Java|JIRA|Postman|Rest Assured|Maven|Jenkins|Cucumber|BDD|Gherkin)/g,'<span class="hb">$1</span>')
+    .replace(/(FOLLOW-UP QUESTION:|IDEAL ANSWER WOULD INCLUDE:|WHAT WAS GOOD:|WHAT WAS MISSING:|ROOT CAUSE HYPOTHESIS:|STEPS TO REPRODUCE:|IMPACT:)/g,'<span class="hp">$1</span>');
+}
+
+// Hide key banner if key exists
+if(localStorage.getItem('claude_key'))document.getElementById('key-banner').classList.remove('show');
+        </script>
+        <!--
+=======================================================
+SETUP INSTRUCTIONS FOR KARTHIK
+=======================================================
+
+TO HOST ON GITHUB PAGES:
+1. Create a new GitHub repository named: karthikbandi18.github.io
+2. Upload this file as: index.html
+3. Go to Settings > Pages > Deploy from main branch
+4. Your portfolio will be live at: https://karthikbandi18.github.io
+
+TO ENABLE AI FEATURES:
+Option A (Demo mode — for when YOU demo to recruiters):
+   - Open browser console on your portfolio
+   - Run: localStorage.setItem('claude_key', 'sk-ant-YOUR-KEY-HERE')
+   - Never commit your key to GitHub
+
+Option B (Production — for public visitors):
+   - Create a simple backend proxy (Node.js/Vercel/Netlify Function)
+   - The proxy holds the API key server-side
+   - Change the fetch URL to point to your proxy endpoint
+   - Free to deploy on Vercel or Netlify
+
+TO GET AN ANTHROPIC API KEY:
+   - Visit: https://console.anthropic.com
+   - Sign up, go to API Keys, create a key
+   - New accounts get free credits — more than enough to demo
+
+PUT THIS URL ON:
+   - LinkedIn "Featured" section
+   - LinkedIn About section
+   - Your resume header
+   - GitHub profile README
+   - Email signature
+
+=======================================================
+-->
+    </body>
+</html>
